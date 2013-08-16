@@ -6,10 +6,12 @@ class CreateComites < ActiveRecord::Migration
       t.string :lugar
       t.references :queja
       t.references :falta
+      t.references :prioridad
 
       t.timestamps
     end
     add_index :comites, :queja_id
     add_index :comites, :falta_id
+    add_index :comites, :prioridad_id
   end
 end

@@ -28,12 +28,11 @@ class FichasController < ApplicationController
   def edit
   
   end
-
+   
 
   def create
     
     @ficha = @programa.fichas.build(params[:ficha])
-    @ficha.programa_id = @programa.id
     render :action => :new unless @ficha.save
     @fichas = Ficha.all
   end

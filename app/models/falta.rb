@@ -1,6 +1,6 @@
 class Falta < ActiveRecord::Base
-
-  has_many :quejas
+  
+  has_many :quejas 
 
   attr_accessible :descripcion, :falta
 

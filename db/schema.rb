@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701215808) do
+ActiveRecord::Schema.define(:version => 20130816011020) do
 
   create_table "actas", :force => true do |t|
     t.string   "ciudad"
@@ -46,10 +46,14 @@ ActiveRecord::Schema.define(:version => 20130701215808) do
     t.time     "hora"
     t.string   "lugar"
     t.integer  "queja_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "falta_id"
+    t.integer  "prioridad_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
+  add_index "comites", ["falta_id"], :name => "index_comites_on_falta_id"
+  add_index "comites", ["prioridad_id"], :name => "index_comites_on_prioridad_id"
   add_index "comites", ["queja_id"], :name => "index_comites_on_queja_id"
 
   create_table "faltas", :force => true do |t|
@@ -98,6 +102,12 @@ ActiveRecord::Schema.define(:version => 20130701215808) do
     t.string   "imagen_content_type"
     t.integer  "imagen_file_size"
     t.datetime "imagen_updated_at"
+  end
+
+  create_table "prioridades", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "programas", :force => true do |t|
@@ -149,5 +159,31 @@ ActiveRecord::Schema.define(:version => 20130701215808) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "usercomites", :force => true do |t|
+    t.string   "nc"
+    t.string   "cedula"
+    t.string   "email"
+    t.date     "fch_ncto"
+    t.integer  "cargo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "usercomites", ["cargo_id"], :name => "index_usercomites_on_cargo_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "username",                     :null => false
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.string   "nombre"
+  end
+
+  add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
 
 end

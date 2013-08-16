@@ -18,11 +18,9 @@
                 <a class="brand" </a>
                 <ul class="nav">
                     <li><a href="#"></a></li>
-                    <!--<li><a href="#">Regístrate!</a></li> -->
-                       <button class="btn btn-success" type="button"><%= link_to 'Regístrate!', quejas_path %></button> 
+                      <button class="btn btn-success" type="button"><%= link_to 'Regístrate!', signup_path, :remote => true %></button> 
                         <li><a href="#"></a></li>
-                        <button class="btn btn-success" type="button"><%= link_to 'Ingresar', quejas_path %></button>
-                   <!-- <li><a href="#">Ingresar</a></li> -->
+                        <button class="btn btn-success" type="button"><%= link_to 'Ingresar', login_path %></button>
                 </ul>
                 <ul class="nav pull-right">
                     <li class="dropdown">
@@ -35,8 +33,7 @@
             </div>
         </div> 
         
-        
-        <div >
+        <div>
             <ul class="navigation">
                 <li>
                     <a href="http://www.twitter.com" title="Twitter"><img src="assets/twitter.png" /></a>

@@ -1,6 +1,6 @@
 <tr id=<%= "queja_#{queja.id}" %>>
   <td><%= link_to queja.id, edit_queja_path(queja), :remote => true %></td>
-  <td><%= queja.fechainforme %></td>
+  <td><%= queja.created_at %></td>
   <td><%= queja.nombres %></td>
   <td><%= queja.apellidos %></td>
   <td><%= queja.tipo_documento.descripcion %> </td>
